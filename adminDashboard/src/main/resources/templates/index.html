@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:text="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+
+</head>
+
+
+
+<body >
+
+
+ <h2>Semester</h2>
+<table border="1" style="width:300px">
+
+    
+    	 <tr>
+         	<th>Semeter id</th>
+         	<th>Semeter nev</th>
+         </tr>
+    	<tr th:each="sem: ${semesters}">
+    			 <td><span th:text="${sem.id}"> nev </span></td>
+    			 <td><span th:text="${sem.name}"> nev </span></td>
+		<td>
+		 <h2>MErfoldkovek</h2>
+		<table border="1" style="width:300px">
+		 <tr>
+         	<th>Merfoldko id</th>
+         	<th>Merfoldko neve</th>
+         </tr>
+		<tr th:each="stone: ${sem.milestones}">
+			<td><span th:text="${stone.id}"> nev </span></td>
+			<td><span th:text="${stone.name}"> nev </span></td>
+		</tr>
+		</table>
+	  <h2>Tanar tabla</h2>
+		<table border="1" style="width:300px">
+		 <tr>
+         	<th>Tanar id</th>
+         	<th>Tanar nev</th>
+         	<th>Tanar azonosito</th>
+         </tr>
+		<tr th:each="teacher: ${sem.teachers}">
+			<td><span th:text="${teacher.id}">  </span></td>
+            <td><span th:text="${teacher.nev}">  </span></td>
+            <td><span th:text="${teacher.neptun}">  </span></td>
+            <td>
+            <h2>Hallgato tabla</h2>
+            	<table border="1" style="width:300px">
+            		 <tr>
+         				<th>Hallgato id</th>
+         				<th>Hallgato neve</th>
+         			</tr>
+            		 <tr th:each="student: ${teacher.studentList}">
+            		 <td><span th:text="${student.id}"> nev </span></td>
+            		 <td><span th:text="${student.nev}"> nev </span></td>
+            		 </tr>
+            	</table>
+            </td>
+		</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+
+
+<br>
+<a href="/addSemester">ADD SEMESTER</a><br/>
+<a href="/addMilestone">ADD Milestone</a><br/>
+<a href="/addTeacher">ADD Teacher</a><br/>
+<a href="/addStudent">ADD Student</a><br/>
+<a href="/deleteSemester">Delete Semester</a><br/>
+
+
+</body>
+</html>
